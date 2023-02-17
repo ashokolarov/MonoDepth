@@ -5,24 +5,31 @@ import numpy as np
 from model import UNET
 from dataset import DepthDataset
 
-device = "cpu"
-model_path = "models/model.pth"
+
+def evaluate(model, image):
+    model.eval()
+
+    image = np.expand_dims(image, axis=0)
+    image = torch.Tensor(image)
+
+    with torch.no_grad():
+        out = model(image)
+        out = out.detach().numpy()
+
+    return out
+
 
 if __name__ == "__main__":
-    model = UNET().to(device)
+    model_path = "../models/model.pth"
+    dataset_path = "../diode/"
+    image_size = (256, 256)
+    dataset_size = 10
+
+    model = UNET()
     model.load_state_dict(torch.load(model_path))
 
-    path = "/Users/ashokolarov/Documents/Projects/MonoDepth/diode/"
-    input_size = (512, 256)
-    dataset = DepthDataset(path, input_size)
+    dataset = DepthDataset(dataset_path, image_size, dataset_size)
 
-    img, truth = dataset[0]
-    pred = model(torch.Tensor(np.expand_dims(img, axis=0))).detach().numpy()
+    image, truth = dataset[8]
 
-    pred = pred.reshape(input_size[::-1])
-    print(pred.shape)
-
-    plt.imshow(truth.squeeze())
-    plt.show()
-    plt.imshow(pred)
-    plt.show()
+    pred = evaluate(model, image)
