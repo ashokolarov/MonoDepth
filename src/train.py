@@ -6,7 +6,7 @@ from model import UNET
 from utils import DepthLoss
 
 LR = 1E-3
-dataset_path = "/Users/ashokolarov/Documents/Projects/MonoDepth/diode/"
+dataset_path = "../diode/"
 dataset_size = 80
 image_size = (256, 256)
 batch_size = 5

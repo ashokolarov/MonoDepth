@@ -1,12 +1,14 @@
-import torch
-import matplotlib.pyplot as plt
 import numpy as np
+import torch
 
-from model import UNET
 from dataset import DepthDataset
+from model import UNET
 
 
-def evaluate(model, image):
+def evaluate(model: torch.nn.Module, image: np.array) -> np.array:
+    """
+    Evaluate trained model on an input image.
+    """
     model.eval()
 
     image = np.expand_dims(image, axis=0)
@@ -30,6 +32,6 @@ if __name__ == "__main__":
 
     dataset = DepthDataset(dataset_path, image_size, dataset_size)
 
-    image, truth = dataset[8]
+    image, truth = dataset[9]
 
     pred = evaluate(model, image)

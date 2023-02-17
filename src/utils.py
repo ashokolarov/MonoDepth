@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import torch
 from torchmetrics import StructuralSimilarityIndexMeasure as SSIM
 from torchmetrics.functional import image_gradients
@@ -5,7 +7,7 @@ from torchmetrics.functional import image_gradients
 
 class DepthLoss(torch.nn.Module):
 
-    def __init__(self, weights):
+    def __init__(self, weights: Tuple[float, float, float]) -> None:
         """
         Generate DepthLoss instance.
 
