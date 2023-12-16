@@ -8,7 +8,7 @@ Neural network model based on [UNET](https://arxiv.org/abs/1505.04597) architect
 
 #### Structural Similarity Index (SSIM)
 
-$C_{SSIM}^l=\frac{1}{N} \sum_{i, j} \frac{1-SSIM}\left(I_{i j}^l \tilde{I}_{i j}^l\right)}{2}$
+$C_{SSIM}^l=\frac{1}{N} \sum_{i, j} \frac{1-SSIM\left(I_{i j}^l \tilde{I}_{i j}^l\right)}{2}$
 
 SSIM is used as a metric to measure the similarity between two given images.
 
