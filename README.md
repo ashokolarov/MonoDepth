@@ -8,7 +8,7 @@ Neural network model based on [UNET](https://arxiv.org/abs/1505.04597) architect
 
 #### Structural Similarity Index (SSIM)
 
-$C_{SSIM}^l=\frac{1}{N} \sum_{i, j} \frac{1-\operatorname{SSIM}\left(I_{i j}^l \tilde{I}_{i j}^l\right)}{2}$
+$C_{SSIM}^l=\frac{1}{N} \sum_{i, j} \frac{1-SSIM}\left(I_{i j}^l \tilde{I}_{i j}^l\right)}{2}$
 
 SSIM is used as a metric to measure the similarity between two given images.
 
@@ -16,7 +16,7 @@ SSIM is used as a metric to measure the similarity between two given images.
 
 $C_{L1}^l = \sum_{i, j} |y_{pred} - y_{true}|$
 
-Again, used to measure the similarity between the ground truth depth map and the network's prediction
+Again, this is used to measure the similarity between the ground truth depth map and the network's prediction
 
 #### Disparity Smoothness
 
